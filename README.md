@@ -1,2 +1,5 @@
-# class-NC
-Assignments in numerical calculus class
+# Class Numerical Calculus
+
+_Students: Ioniche Adrian, Braha Petru_
+
+Solutions will be created in Python.
