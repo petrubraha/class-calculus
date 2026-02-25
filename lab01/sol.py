@@ -22,3 +22,22 @@ if __name__ == "__main__":
     print(f"Machine precision: {machine_precision}, m: {power}")
     print(f"First verification (should NOT be 1.0): {UNIT + machine_precision}")
     print(f"Second verification (should be 1.0): {UNIT + machine_precision / 10}")
+
+
+# hmm interesant if __name__== "__main__" :D 
+
+
+#EXERCITIUL 2
+u, _ = find_machine_precision()
+x = 1.0
+y = u / 10
+z = u / 10
+
+st = (x + y) + z    # (1.0 + u/10) + u/10
+dr = x + (y + z)    # 1.0 + (u/10 + u/10)
+
+if st!=dr:
+    print(f"(x + y) + z = {left}")
+    print(f"x + (y + z) = {right}")
+    print(f"Neasociativ  {st!=dr}")
+# acum trebuie sa gasim x y z pentru care inmultirea ESTE ASOCIATIVA
