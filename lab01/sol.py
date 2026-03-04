@@ -65,12 +65,12 @@ print(f"Timp total {time.time()-s:.4f} secunde")
 
 #EXERCITIUL 3
 print("=" * 74)
-avg_diff_libr_frac = 0.0
-avg_diff_libr_poly = 0.0
+avg_dif_lib_frac = 0.0
+avg_dif_lib_poly = 0.0
 
-computation_time_libr = 0.0 
-computation_time_frac = 0.0 
-computation_time_poly = 0.0
+c_timp_lib = 0.0 
+c_timp_frac = 0.0 
+c_timp_poly = 0.0
 
 for i in range(0, 10_000):
     input = random.uniform(-math.pi / 2, math.pi / 2)
@@ -84,32 +84,32 @@ for i in range(0, 10_000):
         continue
 
     start_time = time.time()
-    result_libr = math.tan(input)
-    t_libr = time.time() - start_time
-    computation_time_libr += t_libr
+    res_lib = math.tan(input)
+    t_lib = time.time() - start_time
+    c_timp_lib += t_lib
 
     start_time = time.time()
-    result_frac = lib.tan_cont_frac(input)
+    res_frac = lib.tan_cont_frac(input)
     t_frac = time.time() - start_time
-    computation_time_frac += t_frac
-    diff_libr_frac = abs(result_libr - result_frac)
-    avg_diff_libr_frac += diff_libr_frac
+    c_timp_frac += t_frac
+    dif_lib_frac = abs(res_lib - res_frac)
+    avg_dif_lib_frac += dif_lib_frac
 
     start_time = time.time()
-    result_poly = lib.tan_poly_approx(input)
+    res_poly = lib.tan_poly_approx(input)
     t_poly = time.time() - start_time
-    computation_time_poly += t_poly
-    diff_libr_poly = abs(result_libr - result_poly)
-    avg_diff_libr_poly += diff_libr_poly
+    c_timp_poly += t_poly
+    dif_lib_poly = abs(res_lib - res_poly)
+    avg_dif_lib_poly += dif_lib_poly
 
-    lib.print_to_file("logger.txt", i, input, result_libr, result_frac, result_poly, t_libr, t_frac, t_poly)
+    lib.print_to_file("logger.txt", i, input, res_lib, res_frac, res_poly, t_lib, t_frac, t_poly)
 
-avg_diff_libr_frac /= 10_000
-avg_diff_libr_poly /= 10_000
+avg_dif_lib_frac /= 10_000
+avg_dif_lib_poly /= 10_000
 
-print(f"Diferenta in medie dintre lib si fractii continue: {avg_diff_libr_frac:.2e}")
-print(f"Diferenta in medie dintre lib si folosind polinoame: {avg_diff_libr_poly:.2e}")
+print(f"Diferenta in medie dintre lib si fractii continue: {avg_dif_lib_frac:.2e}")
+print(f"Diferenta in medie dintre lib si folosind polinoame: {avg_dif_lib_poly:.2e}")
 print("=" * 74)
-print(f"Timp librarie: {computation_time_libr:.4f} seconds")
-print(f"Timp Lentz modificat: {computation_time_frac:.4f} seconds")
-print(f"Timp polinoame: {computation_time_poly:.4f} seconds")
+print(f"Timp librarie: {c_timp_lib:.4f} seconds")
+print(f"Timp Lentz modificat: {c_timp_frac:.4f} seconds")
+print(f"Timp polinoame: {c_timp_poly:.4f} seconds")
