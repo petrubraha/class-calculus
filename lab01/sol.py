@@ -1,6 +1,7 @@
 import time
 import random
-
+import math
+import lib
 
 UNIT = 1.0
 """Global float constant used internally."""
@@ -62,5 +63,38 @@ for incercare in range(1,100_001):
 
 print(f"Timp total {time.time()-s:.4f} secunde")
 
-     
+#EXERCITIUL 3
+avg_diff_libr_frac = 0.0
+avg_diff_libr_poly = 0.0
 
+computation_time_libr = 0.0 
+computation_time_frac = 0.0 
+computation_time_poly = 0.0
+
+for iteration in range(0, 10_000):
+    input = random.uniform(-math.pi / 2, math.pi / 2)
+
+    start_time = time.time()
+    result_libr = math.tan(input)
+    computation_time_libr += time.time() - start_time
+
+    start_time = time.time()
+    result_frac = lib.tan_cont_frac(input)
+    computation_time_frac += time.time() - start_time
+    diff_libr_frac = abs(result_libr - result_frac)
+    avg_diff_libr_frac += diff_libr_frac
+
+    start_time = time.time()
+    result_poly = lib.tan_poly_approx(input)
+    computation_time_poly += time.time() - start_time
+    diff_libr_poly = abs(result_libr - result_poly)
+    avg_diff_libr_poly += diff_libr_poly
+
+avg_diff_libr_frac /= 10_000
+avg_diff_libr_poly /= 10_000
+
+print(f"Average difference between library and continued fraction: {avg_diff_libr_frac:.2e}")
+print(f"Average difference between library and polynomial approximation: {avg_diff_libr_poly:.2e}")
+print(f"Total computation time for library function: {computation_time_libr:.4f} seconds")
+print(f"Total computation time for continued fraction approximation: {computation_time_frac:.4f} seconds")
+print(f"Total computation time for polynomial approximation: {computation_time_poly:.4f} seconds")
