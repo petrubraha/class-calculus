@@ -78,7 +78,7 @@ def qr_decomp_house(a):
             for i in range(r, n):
                 q[i, j] -= gamma * u[i]
         
-    return q, a
+    return q.T, a
 
 def qr_decomp_lib(a):
     return np.linalg.qr(a)
@@ -128,6 +128,8 @@ def main(n: int | None):
 
     q_house, r_house = qr_decomp_house(a.copy())
     q_lib, r_lib = qr_decomp_lib(a)
+    display_matrix(q_lib, "r_lib")
+    display_matrix(q_house, "r_house")
 
     x_house = compute_x(q_house, r_house, b)
     x_lib = compute_x(q_lib, r_lib, b)
