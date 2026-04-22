@@ -1,5 +1,5 @@
 import numpy as np
-from numpy.linalg import norm, svd, inv, matrix_rank, cond, cholesky, eigvalsh
+from numpy.linalg import norm, svd, inv, matrix_rank, cond, cholesky, eigvalsh, pinv
 
 np.set_printoptions(precision=8, suppress=True, linewidth=120)
 
@@ -168,7 +168,7 @@ def svd_analysis(A):
     #asta merge doar daca rangul e maxim
     AtA = A.T @ A
     try:
-        AtA_inv = inv(AtA)
+        AtA_inv = pinv(AtA)
         A_J = AtA_inv @ A.T
         print("\npseudoinversa least-squares (A_J):")
         print(A_J)
