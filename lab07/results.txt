@@ -1,0 +1,20 @@
+Polynomial: P(x) = x^3 - 6x^2 + 11x - 6
+Coefficients: [1.0, -6.0, 11.0, -6.0]
+Root interval: [-12.000000, 12.000000]
+Precision epsilon = 1e-08
+
+Newton's Method - distinct roots:
+  root 1: 1.000000000000   P(r) = 0.00e+00
+  root 2: 3.000000000000   P(r) = 0.00e+00
+  root 3: 2.000000000000   P(r) = -8.88e-16
+  Total: 3
+
+Olver's Method - distinct roots:
+  root 1: 1.000000000000   P(r) = 0.00e+00
+  root 2: 2.000000000000   P(r) = 0.00e+00
+  root 3: 3.000000000000   P(r) = 0.00e+00
+  Total: 3
+
+Convergence comparison (x0 = 0.5):
+  Newton:  root = 1.000000000000,  iterations = 6
+  Olver :  root = 1.000000000000,  iterations = 5
